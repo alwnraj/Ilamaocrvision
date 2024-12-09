@@ -3,11 +3,11 @@ from PIL import Image
 import io
 import os
 import base64
-
+import config
 from groq import Groq
 
 # Set up the Groq API client
-client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+client = Groq(api_key=config.api_key)
 
 # Page Configuration
 st.set_page_config(
@@ -92,11 +92,11 @@ if uploaded_file:
 # Display Results
 if "ocr_result" in st.session_state:
     st.markdown("### Extracted LaTeX Code")
+    st.markdown("###### Please remember to remove the first two symbols from first and last of the output")
     st.code(st.session_state["ocr_result"], language="latex")
 
     # Render LaTeX (cleaned)
     st.markdown("### Rendered Output")
-    st.markdown("###### Please remember to remove the first two symbols from first and last of the output")
     cleaned_latex = st.session_state["ocr_result"].replace("\\[", "").replace("\\]", "")
     st.latex(cleaned_latex)
 
