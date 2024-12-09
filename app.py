@@ -3,7 +3,6 @@ from PIL import Image
 import io
 import os
 import base64
-import config
 from groq import Groq
 from dotenv import load_dotenv
 
