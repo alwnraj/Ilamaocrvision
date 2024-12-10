@@ -9,12 +9,8 @@ from dotenv import load_dotenv
 # Load environment variables from .env
 load_dotenv()
 
-# Access the API key securely
-api_key = os.getenv("GROQ_API_KEY")
-
-
 # Set up the Groq API client
-client = Groq(api_key=api_key)
+client = Groq(api_key= os.getenv("GROQ_API_KEY"))
 
 
 # Page Configuration
